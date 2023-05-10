@@ -1,29 +1,50 @@
 import { useDispatch } from 'react-redux';
 import { addContact, getConatcts } from 'redux/contactsSlice';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 import css from './ContactForm.module.css';
 
 export const ContactForm = () => {
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
   const dispatch = useDispatch();
-
   const contacts = useSelector(getConatcts);
+
+  const handleInputsChange = e => {
+    const { name, value } = e.currentTarget;
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'number':
+        setNumber(value);
+        break;
+      default:
+        console.log('error');
+        break;
+    }
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
-    const name = e.target.elements.name.value;
-    const numder = e.target.elements.number.value;
+
     const isInContacts = contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
 
     if (isInContacts) {
       alert(`${name} is already in contacts`);
-      e.target.reset();
+      reset();
       return;
     }
-    dispatch(addContact(name, numder));
-    e.target.reset();
+    dispatch(addContact(name, number));
+    reset();
+  };
+
+  const reset = () => {
+    setName('');
+    setNumber('');
   };
 
   return (
@@ -31,6 +52,8 @@ export const ContactForm = () => {
       <div>
         <label htmlFor="name">Name</label>
         <input
+          onChange={handleInputsChange}
+          value={name}
           id="name"
           type="text"
           name="name"
@@ -42,6 +65,8 @@ export const ContactForm = () => {
       <div>
         <label htmlFor="number">Number</label>
         <input
+          onChange={handleInputsChange}
+          value={number}
           id="number"
           type="tel"
           name="number"

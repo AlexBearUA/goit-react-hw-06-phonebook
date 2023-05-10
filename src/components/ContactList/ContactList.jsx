@@ -10,7 +10,6 @@ export const ContactList = () => {
 
   const getFilteredContacts = () => {
     const normalizedFilter = filter.toLowerCase();
-
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
@@ -29,7 +28,7 @@ export const ContactList = () => {
           ))}
         </ul>
       ) : (
-        <p className="list-is-empty">Your contacts is empty</p>
+        <p className="list-is-empty">No contacts</p>
       )}
     </>
   );
