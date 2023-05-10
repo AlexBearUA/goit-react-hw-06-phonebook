@@ -26,6 +26,11 @@ export const ContactForm = () => {
     }
   };
 
+  const reset = () => {
+    setName('');
+    setNumber('');
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -40,11 +45,6 @@ export const ContactForm = () => {
     }
     dispatch(addContact(name, number));
     reset();
-  };
-
-  const reset = () => {
-    setName('');
-    setNumber('');
   };
 
   return (
