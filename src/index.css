@@ -39,3 +39,7 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.list-is-empty {
+  text-align: center;
+}

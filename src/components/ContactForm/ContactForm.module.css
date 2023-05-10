@@ -1,5 +1,5 @@
 .contactForm {
-  width: 300px;
+  width: 450px;
   padding: 40px;
   border: 1px solid black;
   margin: 0 auto 30px auto;
@@ -11,6 +11,8 @@
 
 .contactForm input {
   height: 30px;
+  width: 250px;
+  margin-left: 20px;
 }
 .contactForm button {
   border-radius: 5px;
